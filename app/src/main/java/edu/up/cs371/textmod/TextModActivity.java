@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import java.util.ArrayList;
@@ -53,6 +55,24 @@ public class TextModActivity extends ActionBarActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // bind the spinner and adapter
         spinner.setAdapter(adapter);
+
+        final EditText editText = (EditText)findViewById(R.id.editText);
+
+        Button button4 = (Button)findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+               String textToReverse = editText.getEditableText().toString();
+                String reversedText = "";
+                for(int j=textToReverse.length()-1;j>=0;j--)
+                {
+                    reversedText = reversedText + textToReverse.charAt(j);
+                }
+
+
+            }
+        });
 
         // load the images from the resources
         //
