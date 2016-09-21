@@ -125,10 +125,7 @@ public class TextModActivity extends ActionBarActivity {
          */
         @Override
         public void onNothingSelected(AdapterView<?> parentView) {
-            // Commit comment :)
-
-
-
+            // your code here
         }
     }
 }
