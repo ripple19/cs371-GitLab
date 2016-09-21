@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class TextModActivity extends ActionBarActivity {
@@ -29,7 +31,8 @@ public class TextModActivity extends ActionBarActivity {
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
-
+    private TextView editText;
+    private Spinner spin;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -40,21 +43,32 @@ public class TextModActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_mod);
 
+
+
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
 
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+         spin = (Spinner)findViewById(R.id.spinner);
+
         // get array of strings
+
+
+
+
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
+
+        editText = (TextView)findViewById(R.id.editText);
+
+
         // create adapter with the strings
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, spinnerNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // bind the spinner and adapter
-        spinner.setAdapter(adapter);
+        spin.setAdapter(adapter);
 
         final EditText editText = (EditText)findViewById(R.id.editText);
 
@@ -91,10 +105,35 @@ public class TextModActivity extends ActionBarActivity {
         }
 
         // define a listener for the spinner
-        spinner.setOnItemSelectedListener(new MySpinnerListener());
+        spin.setOnItemSelectedListener(new MySpinnerListener());
 
     }
 
+    public void OnClickChange(View v)
+    {
+        String text = spin.getSelectedItem().toString();
+        editText.setText(text);
+    }
+
+    public void OnClickClear(View v)
+    {
+
+        editText.setText("");
+    }
+
+    public void OnClickUpper(View v)
+    {
+        String text = editText.getEditableText().toString();
+        String upperText = text.toUpperCase();
+        editText.setText(upperText);
+    }
+
+    public void OnClickLower(View v)
+    {
+        String text = editText.getEditableText().toString();
+        String lowerText = text.toLowerCase();
+        editText.setText(lowerText);
+    }
     /**
      * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
      */
@@ -127,6 +166,7 @@ public class TextModActivity extends ActionBarActivity {
      * class that handles our spinner's selection events
      */
     private class MySpinnerListener implements OnItemSelectedListener {
+
 
         /**
          * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(
