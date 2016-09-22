@@ -70,23 +70,13 @@ public class TextModActivity extends ActionBarActivity {
         // bind the spinner and adapter
         spin.setAdapter(adapter);
 
-        final EditText editText = (EditText)findViewById(R.id.editText);
-
-        Button button4 = (Button)findViewById(R.id.button4);
-        button4.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-               String textToReverse = editText.getEditableText().toString();
-                String reversedText = "";
-                for(int j=textToReverse.length()-1;j>=0;j--)
-                {
-                    reversedText = reversedText + textToReverse.charAt(j);
-                }
 
 
-            }
-        });
+
+
+
+
+
 
         // load the images from the resources
         //
@@ -108,6 +98,22 @@ public class TextModActivity extends ActionBarActivity {
         spin.setOnItemSelectedListener(new MySpinnerListener());
 
     }
+
+
+    public void OnClickReverse(View v)
+    {
+
+        String textToReverse = editText.getEditableText().toString();
+        String reversedText = "";
+        for (int j = textToReverse.length() - 1; j >= 0; j--)
+        {
+            reversedText = reversedText + textToReverse.charAt(j);
+        }
+        editText.setText(reversedText);
+
+
+    }
+
 
     public void OnClickChange(View v)
     {
