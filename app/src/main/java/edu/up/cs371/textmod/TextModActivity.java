@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
 public class TextModActivity extends ActionBarActivity {
 
     // array-list that contains our images to display
